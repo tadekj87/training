@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">training</string>
+    <string name="Teren">Teren</string>
+    <string name="Dom">Dom</string>
 </resources>

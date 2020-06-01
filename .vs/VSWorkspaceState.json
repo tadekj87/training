@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\.idea",
+    "\\.idea\\codeStyles",
+    "\\app",
+    "\\app\\src",
+    "\\app\\src\\main\\java",
+    "\\app\\src\\main\\java\\com",
+    "\\app\\src\\main\\res",
+    "\\gradle"
+  ],
+  "SelectedNode": "\\.idea\\vcs.xml",
+  "PreviewInSolutionExplorer": false
+}
