@@ -4,57 +4,218 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background1"
     tools:context=".Dom">
 
+
+    <SeekBar
+        android:id="@+id/Moc_seekBar"
+        android:layout_width="355dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="16dp"
+        android:max="1000"
+        app:layout_constraintEnd_toEndOf="@+id/WyslijWiadomosc_Button"
+        app:layout_constraintStart_toStartOf="@+id/NumerTelefonu_EditText"
+        app:layout_constraintTop_toBottomOf="@+id/NumerTelefonu_EditText" />
 
     <EditText
         android:id="@+id/NumerTelefonu_EditText"
         android:layout_width="200dp"
         android:layout_height="45dp"
+        android:layout_marginTop="428dp"
         android:hint="Podaj numer telefonu"
         android:inputType="phone"
-        app:layout_constraintBottom_toTopOf="@+id/SMS_EditText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.151"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <EditText
-        android:id="@+id/SMS_EditText"
-        android:layout_width="200dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="456dp"
-        android:hint="Napisz wiadomosc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.151"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/WyslijWiadomosc"
+        android:id="@+id/Sila_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Sila"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Wytrzymalosc_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginLeft="120dp"
+        android:text="Wytrzymalosc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Sila_Button" />
+
+    <TextView
+        android:id="@+id/ZadanaMoc_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="20dp"
+        android:text="Zadana moc:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Wytrzymalosc_Button" />
+
+
+    <TextView
+        android:id="@+id/ZadanaKadencja_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Zadana kadencja:"
+        app:layout_constraintStart_toStartOf="@+id/ZadanaMoc_TextView"
+        app:layout_constraintTop_toTopOf="@+id/ZadanaMoc_TextView" />
+
+    <View
+        android:id="@+id/divider5"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="92dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/AktualnaMoc_textView"
+        android:layout_width="107dp"
+        android:layout_height="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/divider7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.763"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Moc_textView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/AktualnaKadencja_textView"
+        android:layout_width="108dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/divider7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.765"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Moc_textView"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/Moc_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MOC"
+        app:layout_constraintBottom_toTopOf="@+id/Kadencja_textView"
+        app:layout_constraintEnd_toStartOf="@+id/AktualnaMoc_textView"
+        app:layout_constraintHorizontal_bias="0.621"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider5"
+        app:layout_constraintVertical_bias="0.189" />
+
+    <TextView
+        android:id="@+id/Kadencja_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:layout_marginLeft="108dp"
+        android:layout_marginTop="56dp"
+        android:text="KADENCJA"
+        app:layout_constraintEnd_toStartOf="@+id/progressBar6"
+        app:layout_constraintHorizontal_bias="0.628"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider5" />
+
+    <View
+        android:id="@+id/divider7"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="4dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Kadencja_textView" />
+
+
+    <RatingBar
+        android:id="@+id/AvgMoc_ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:stepSize=".1"
+        app:layout_constraintBottom_toTopOf="@+id/AvgKadencja_ratingBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider7"
+        app:layout_constraintVertical_bias="0.441" />
+
+    <RatingBar
+        android:id="@+id/AvgKadencja_ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="156dp"
+        android:layout_marginLeft="156dp"
+        android:stepSize=".1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/AvgKadencja_textView" />
+
+    <TextView
+        android:id="@+id/AvgMoc_textView"
+        android:layout_width="74dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="40dp"
+        android:text="AVG MOC"
+        app:layout_constraintEnd_toStartOf="@+id/AvgMoc_ratingBar"
+        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider7" />
+
+
+    <TextView
+        android:id="@+id/AvgKadencja_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:text="AVG KADENCJA"
+        app:layout_constraintEnd_toStartOf="@+id/AvgKadencja_ratingBar"
+        app:layout_constraintHorizontal_bias="0.592"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider7" />
+
+    <Button
+        android:id="@+id/WyslijWiadomosc_Button"
         android:layout_width="140dp"
         android:layout_height="45dp"
-        android:layout_marginTop="456dp"
+        android:layout_marginTop="428dp"
         android:contentDescription="make_a_call"
         android:onClick="SMS_OnClick"
         android:text="Wyslij sms"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.589"
-        app:layout_constraintStart_toEndOf="@+id/SMS_EditText"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="32dp"
         android:text="@string/Dom"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.907"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <SeekBar
+        android:id="@+id/Kadencja_seekBar"
+        android:layout_width="355dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintStart_toStartOf="@+id/Moc_seekBar"
+        app:layout_constraintTop_toTopOf="@+id/Moc_seekBar" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

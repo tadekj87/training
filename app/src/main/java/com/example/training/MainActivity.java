@@ -16,8 +16,8 @@ import com.hitomi.cmlibrary.OnMenuSelectedListener;
 public class MainActivity extends AppCompatActivity {
 
     String arrayName[]={"Dom",
-                        "Teren",
-                        "Wyjscie"};
+            "Teren",
+            "Wyjscie"};
     private static int SPLASH_TIME_OUT=4000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +25,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //new Handler().postDelayed(new Runnable() {
-       //     @Override
-         //   public void run() {
-          //      Intent homeIntent=new Intent(MainActivity.this,HomeActivity.class);
-          //      startActivity(homeIntent);
-         //       finish();
-          //  }
-      //  },SPLASH_TIME_OUT);
+        //     @Override
+        //   public void run() {
+        //      Intent homeIntent=new Intent(MainActivity.this,HomeActivity.class);
+        //      startActivity(homeIntent);
+        //       finish();
+        //  }
+        //  },SPLASH_TIME_OUT);
 
 
         CircleMenu circleMenu=(CircleMenu)findViewById(R.id.circle_menu);
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                             Handler h = new Handler();
                             h.postDelayed(new Runnable() {
                                               public void run() {
-                                                  Intent intent = new Intent(MainActivity.this, Teren.class);
+                                                  Intent intent = new Intent(MainActivity.this, Dom.class);
                                                   startActivityForResult(intent, 1);
                                               }
                                           }
@@ -69,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
 
                             Handler h = new Handler();
                             h.postDelayed(new Runnable() {
-                                public void run() {
+                                              public void run() {
 
-                                    System.exit(0);
-                                }
+                                                  System.exit(0);
+                                              }
                                           }
                                     , 1000);
                         }
