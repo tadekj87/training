@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,15 +16,33 @@ import com.hitomi.cmlibrary.OnMenuSelectedListener;
 
 public class MainActivity extends AppCompatActivity {
 
+    String arrayQuotes[]={"Jeśli możesz kłaść się spać każdej nocy ze świadomością, że w ciągu dnia dałeś z siebie wszystko, sukces Cię znajdzie – Mason Russell L.",
+            "Nigdy nie narzekaj, że masz pod górę, skoro zdecydowałaś się iść na szczyt.",
+            "Każdy problem ma rozwiązanie. Jeśli nie ma rozwiązania, to nie ma problemu.",
+            "„Kiedyś” to choroba, która każe nam zabrać wszystkie nasze marzenia do grobu – Timothy Ferriss",
+            "Myślę pozytywnie...-Wojtek Sokół",
+            "Jeśli masz zamiar w coś wątpić, to zacznij wątpić w swoje ograniczenia – Don Ward",
+            "Motywacja jest tym, co pozwala zacząć. Nawyk jest tym, co pozwala wytrwać w postanowieniu.",
+            "Jeśli myślisz o poddaniu się, przypomnij sobie dlaczego zaczęłaś.",
+            "Im bardziej w życiu ma się pod górkę, tym piękniejsze będą później widoki."
+    };
     String arrayName[]={"Dom",
             "Teren",
             "Wyjscie"};
     private static int SPLASH_TIME_OUT=4000;
+
+
+    int OldValue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        TextView Quote=(TextView) findViewById(R.id.textViewQuote);
+        int random = (int) (Math.random()*arrayQuotes.length);
+        if(random==OldValue)
+        {random = (int) (Math.random()*arrayQuotes.length);}
+        Quote.setText(arrayQuotes[random]);
+        OldValue=random;
         //new Handler().postDelayed(new Runnable() {
         //     @Override
         //   public void run() {
