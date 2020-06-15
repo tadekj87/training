@@ -8,186 +8,186 @@
     tools:context=".Teren">
 
 
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.773" />
+
     <SeekBar
         android:id="@+id/Moc_seekBar"
         android:layout_width="355dp"
         android:layout_height="31dp"
-        android:layout_marginTop="20dp"
         android:max="1000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AvgKadencja_ratingBar" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/divider2"
+        app:layout_constraintStart_toStartOf="@+id/divider2"
+        app:layout_constraintTop_toBottomOf="@+id/divider2"
+        app:layout_constraintVertical_bias="0.22000003" />
 
     <SeekBar
         android:id="@+id/Kadencja_seekBar"
         android:layout_width="355dp"
         android:layout_height="31dp"
-        android:layout_marginTop="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/Moc_seekBar"
-        app:layout_constraintTop_toTopOf="@+id/Moc_seekBar" />
+        app:layout_constraintTop_toBottomOf="@+id/Moc_seekBar" />
 
     <TextView
         android:id="@+id/Teren"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:fontFamily="sans-serif-condensed-light"
         android:text="@string/Teren"
-        android:textSize="36sp"
+        android:textSize="50sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.949"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Pogoda_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:text="Pogoda: Wrocław Temperatura: 20 C"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.173"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/Teren" />
 
     <Button
         android:id="@+id/Trening1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginBottom="49dp"
         android:text="3 Minuty"
+        app:layout_constraintBottom_toTopOf="@+id/divider5"
+        app:layout_constraintEnd_toStartOf="@+id/progressBar"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Pogoda_textView" />
 
     <Button
         android:id="@+id/Trening2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
+        android:layout_width="88dp"
+        android:layout_height="49dp"
         android:text="10 Minut"
+        app:layout_constraintEnd_toEndOf="@+id/Trening1"
         app:layout_constraintStart_toStartOf="@+id/Trening1"
-        app:layout_constraintTop_toBottomOf="@+id/Pogoda_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/Trening1" />
 
     <TextView
         android:id="@+id/ProcentTreningu_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
         android:text="20%"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/progressBar"
+        app:layout_constraintEnd_toEndOf="@+id/progressBar"
+        app:layout_constraintStart_toStartOf="@+id/progressBar"
+        app:layout_constraintTop_toTopOf="@+id/progressBar" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="111dp"
         android:layout_height="92dp"
-        android:layout_marginTop="60dp"
         android:indeterminate="false"
         android:max="100"
         android:progress="50"
         android:progressDrawable="@drawable/circular"
         android:secondaryProgress="100"
-        app:layout_constraintBottom_toTopOf="@+id/divider5"
+        app:layout_constraintBottom_toBottomOf="@+id/Trening2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/Trening1"
+        app:layout_constraintTop_toTopOf="@+id/Trening1" />
 
     <View
         android:id="@+id/divider5"
         android:layout_width="409dp"
         android:layout_height="1dp"
-        android:layout_marginTop="164dp"
         android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Pogoda_textView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.361" />
 
     <TextView
         android:id="@+id/AktualnaMoc_textView"
         android:layout_width="107dp"
         android:layout_height="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/divider7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.763"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Moc_textView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/Moc_textView"
+        app:layout_constraintTop_toTopOf="@+id/Moc_textView" />
 
 
     <TextView
         android:id="@+id/AktualnaKadencja_textView"
         android:layout_width="108dp"
         android:layout_height="24dp"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/divider7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.765"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Moc_textView"
-        app:layout_constraintVertical_bias="0.535" />
+        app:layout_constraintStart_toStartOf="@+id/AktualnaMoc_textView"
+        app:layout_constraintTop_toTopOf="@+id/Kadencja_textView" />
 
     <TextView
         android:id="@+id/Moc_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
+        android:layout_marginBottom="45dp"
         android:text="MOC"
-        app:layout_constraintBottom_toTopOf="@+id/Kadencja_textView"
-        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintBottom_toTopOf="@+id/divider7"
+        app:layout_constraintEnd_toStartOf="@+id/AktualnaMoc_textView"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider5"
-        app:layout_constraintVertical_bias="0.441" />
+        app:layout_constraintTop_toBottomOf="@+id/divider5" />
 
     <TextView
         android:id="@+id/Kadencja_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginLeft="84dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="15dp"
         android:text="KADENCJA"
-        app:layout_constraintEnd_toStartOf="@+id/progressBar6"
-        app:layout_constraintHorizontal_bias="0.628"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider5" />
+        app:layout_constraintStart_toStartOf="@+id/Moc_textView"
+        app:layout_constraintTop_toBottomOf="@+id/Moc_textView" />
 
     <View
         android:id="@+id/divider7"
         android:layout_width="409dp"
         android:layout_height="1dp"
-        android:layout_marginTop="36dp"
         android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Kadencja_textView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.538" />
 
     <RatingBar
         android:id="@+id/AvgMoc_ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:stepSize=".1"
-        app:layout_constraintBottom_toTopOf="@+id/AvgKadencja_ratingBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider7"
-        app:layout_constraintVertical_bias="0.441" />
+        app:layout_constraintBottom_toBottomOf="@+id/AvgMoc_textView"
+        app:layout_constraintStart_toStartOf="@+id/AvgKadencja_ratingBar"
+        app:layout_constraintTop_toTopOf="@+id/AvgMoc_textView" />
 
     <RatingBar
         android:id="@+id/AvgKadencja_ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
-        android:layout_marginLeft="156dp"
-        android:layout_marginTop="108dp"
         android:stepSize=".1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider7" />
+        app:layout_constraintBottom_toBottomOf="@+id/AvgKadencja_textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/AvgKadencja_textView"
+        app:layout_constraintTop_toTopOf="@+id/AvgKadencja_textView" />
 
     <TextView
         android:id="@+id/AvgMoc_textView"
@@ -195,20 +195,31 @@
         android:layout_height="15dp"
         android:layout_marginTop="40dp"
         android:text="AVG MOC"
-        app:layout_constraintEnd_toStartOf="@+id/AvgMoc_ratingBar"
-        app:layout_constraintHorizontal_bias="0.567"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/AvgKadencja_textView"
         app:layout_constraintTop_toBottomOf="@+id/divider7" />
 
     <TextView
         android:id="@+id/AvgKadencja_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="40dp"
         android:text="AVG KADENCJA"
+        app:layout_constraintBottom_toTopOf="@+id/divider2"
         app:layout_constraintEnd_toStartOf="@+id/AvgKadencja_ratingBar"
-        app:layout_constraintHorizontal_bias="0.574"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider7" />
+        app:layout_constraintTop_toBottomOf="@+id/AvgMoc_textView"
+        app:layout_constraintVertical_bias="0.16000003" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/Teren"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Teren"
+        app:srcCompat="@drawable/ic_arrow" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
