@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.SeekBar;
@@ -27,7 +28,7 @@ public class Teren extends AppCompatActivity {
     private TextView AktualnaKadencja;
     private SeekBar UstawionaMocBar;
     private SeekBar UstawionaKadencjaBar;
-
+    private ImageButton bckButton;
     private RatingBar SredniaMocRatingBar;
     private RatingBar SredniaKadencjaRatingBar;
     Handler handler = new Handler(); //Do timera
@@ -52,6 +53,9 @@ public class Teren extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+
+
+
         SredniaMocRatingBar = findViewById(R.id.AvgMoc_ratingBar);
         SredniaKadencjaRatingBar = findViewById(R.id.AvgKadencja_ratingBar);
         AktualnaMoc = findViewById(R.id.AktualnaMoc_textView);
@@ -82,7 +86,7 @@ public class Teren extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teren);
-
+        bckButton = (ImageButton) findViewById(R.id.imageButton);
         Resources res = getResources(); //do progressbar
         Drawable drawable = res.getDrawable(R.drawable.circular);
         final ProgressBar mProgress = (ProgressBar) findViewById(R.id.progressBar);
@@ -204,6 +208,15 @@ public class Teren extends AppCompatActivity {
             }
         };
         mCountDownTimer.start();*/
+
+    bckButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent= new Intent(Teren.this, MainActivity.class);
+            startActivity(intent);
+        }
+    });
+
     }
 
 
