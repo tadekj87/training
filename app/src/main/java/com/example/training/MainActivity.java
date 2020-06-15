@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView Quote=(TextView) findViewById(R.id.textViewQuote);
+
         int random = (int) (Math.random()*arrayQuotes.length);
         if(random==OldValue)
         {random = (int) (Math.random()*arrayQuotes.length);}
