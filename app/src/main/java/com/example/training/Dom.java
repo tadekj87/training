@@ -142,8 +142,8 @@ public class Dom extends AppCompatActivity {
         SilaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MocTreningu = 400;
-                KadencjaTreningu = 30;
+                MocTreningu = 300;
+                KadencjaTreningu = 80;
                 ZadanaMoc.setText("Zadana moc: " + MocTreningu +" W");
                 ZadanaKadencja.setText("Zadana kadencja: " + KadencjaTreningu + " obr/min");
                 SredniaMocfloat = 0;
@@ -155,8 +155,8 @@ public class Dom extends AppCompatActivity {
         WytrzymaloscButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MocTreningu = 300;
-                KadencjaTreningu = 50;
+                MocTreningu = 250;
+                KadencjaTreningu = 100;
                 ZadanaMoc.setText("Zadana moc: " + MocTreningu +" W");
                 ZadanaKadencja.setText("Zadana kadencja: " + KadencjaTreningu + " obr/min");
                 SredniaMocfloat = 0;

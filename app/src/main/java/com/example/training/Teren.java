@@ -160,6 +160,7 @@ public class Teren extends AppCompatActivity {
         Trening2Button = findViewById(R.id.Trening2);
 
         pogoda=findViewById(R.id.Pogoda_textView);
+       // pogoda.setText("dzialaj");
         String content;    //do pogody
         Weather weather = new Weather();
         try {
@@ -202,6 +203,7 @@ public class Teren extends AppCompatActivity {
 
         } catch (Exception e) {
             e.printStackTrace();
+            Log.i("blad", "BLAD");
         }
 
 

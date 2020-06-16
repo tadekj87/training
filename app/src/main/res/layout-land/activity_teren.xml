@@ -47,6 +47,7 @@
         android:layout_marginRight="20dp"
         android:fontFamily="sans-serif-condensed-light"
         android:text="@string/Teren"
+        android:textColor="?attr/textcolor"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,6 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Pogoda: Wrocław Temperatura: 20 C"
+        android:textColor="?attr/textcolor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
@@ -125,6 +127,7 @@
         android:id="@+id/AktualnaMoc_textView"
         android:layout_width="107dp"
         android:layout_height="24dp"
+        android:textColor="?attr/textcolor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/Moc_textView"
@@ -135,6 +138,7 @@
         android:id="@+id/AktualnaKadencja_textView"
         android:layout_width="108dp"
         android:layout_height="24dp"
+        android:textColor="?attr/textcolor"
         app:layout_constraintStart_toStartOf="@+id/AktualnaMoc_textView"
         app:layout_constraintTop_toTopOf="@+id/Kadencja_textView" />
 
@@ -144,6 +148,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="45dp"
         android:text="MOC"
+        android:textColor="?attr/textcolor"
         app:layout_constraintBottom_toTopOf="@+id/divider7"
         app:layout_constraintEnd_toStartOf="@+id/AktualnaMoc_textView"
         app:layout_constraintHorizontal_bias="0.5"
@@ -156,6 +161,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="KADENCJA"
+        android:textColor="?attr/textcolor"
         app:layout_constraintStart_toStartOf="@+id/Moc_textView"
         app:layout_constraintTop_toBottomOf="@+id/Moc_textView" />
 
@@ -196,6 +202,7 @@
         android:layout_height="15dp"
         android:layout_marginTop="40dp"
         android:text="AVG MOC"
+        android:textColor="?attr/textcolor"
         app:layout_constraintStart_toStartOf="@+id/AvgKadencja_textView"
         app:layout_constraintTop_toBottomOf="@+id/divider7" />
 
@@ -205,6 +212,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="AVG KADENCJA"
+        android:textColor="?attr/textcolor"
         app:layout_constraintBottom_toTopOf="@+id/divider2"
         app:layout_constraintEnd_toStartOf="@+id/AvgKadencja_ratingBar"
         app:layout_constraintHorizontal_bias="0.5"
