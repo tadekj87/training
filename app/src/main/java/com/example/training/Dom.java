@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.Toast;
 import android.widget.Button;
@@ -38,7 +39,7 @@ public class Dom extends AppCompatActivity {
     private TextView ZadanaKadencja;
     private int MocTreningu=0;
     private int KadencjaTreningu=0;
-
+    private ImageButton bckButton;
     @Override
     protected void onResume() {
         SredniaMocRatingBar = findViewById(R.id.AvgMoc_ratingBar);
@@ -72,6 +73,8 @@ public class Dom extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dom);
+
+        bckButton=(ImageButton) findViewById(R.id.imageButton2);
 
         Moc = findViewById(R.id.Moc_textView);
         Kadencja = findViewById(R.id.Kadencja_textView);
@@ -156,6 +159,16 @@ public class Dom extends AppCompatActivity {
                 licznik=0;
             }
         });
+
+        bckButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(Dom.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
 

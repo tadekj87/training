@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -19,16 +18,6 @@ import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 
 public class Teren extends AppCompatActivity {
 
@@ -39,7 +28,6 @@ public class Teren extends AppCompatActivity {
     private SeekBar UstawionaMocBar;
     private SeekBar UstawionaKadencjaBar;
 
-    private TextView pogoda;
     private RatingBar SredniaMocRatingBar;
     private RatingBar SredniaKadencjaRatingBar;
     Handler handler = new Handler(); //Do timera
@@ -53,53 +41,9 @@ public class Teren extends AppCompatActivity {
 
     private ProgressBar CzasTreninguBar;
 
-
-    String Miasto="Wroclaw";
     int i=0;
     CountDownTimer mCountDownTimer;
     //ProgressBar mProgressBar=findViewById(R.id.progressBar);
-
-    class Weather extends AsyncTask<String,Void,String> {       //pierwszy string ma w sobie URL, trzeba dac void, trzeci string oznacza zwracany typ danych
-
-        public void search(View view){
-
-        }
-
-        @Override
-        protected String doInBackground(String... address){
-
-            //Dzieki String... mozna wpisac wiele adresow, dziala jak tablica
-            try {
-                URL url = new URL(address[0]);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                //ustanow polaczenie z adresem
-                connection.connect();
-
-                //pobierz dane z url
-                InputStream is = connection.getInputStream();
-                InputStreamReader isr = new InputStreamReader(is);
-
-                //pobierz dane i zwroc jako string
-                int data = isr.read();
-                String content = "";
-                char ch;
-                while (data !=-1) {
-                    ch =(char) data;
-                    content = content + ch;
-                    data = isr.read();
-                }
-                return content;
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-    }
-
 
 
     int pStatus = 0; //do progressbar
@@ -134,8 +78,6 @@ public class Teren extends AppCompatActivity {
         super.onPause();
     }
 
-    ProgressBar mProgress;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -143,7 +85,7 @@ public class Teren extends AppCompatActivity {
 
         Resources res = getResources(); //do progressbar
         Drawable drawable = res.getDrawable(R.drawable.circular);
-        mProgress = (ProgressBar) findViewById(R.id.progressBar);
+        final ProgressBar mProgress = (ProgressBar) findViewById(R.id.progressBar);
         mProgress.setProgress(0);
         mProgress.setSecondaryProgress(100);
         mProgress.setMax(100);
@@ -152,54 +94,6 @@ public class Teren extends AppCompatActivity {
         // CzasTreninguBar.setProgress(35);
         Trening1Button = findViewById(R.id.Trening1);
         Trening2Button = findViewById(R.id.Trening2);
-
-        pogoda=findViewById(R.id.Pogoda_textView);
-        String content;    //do pogody
-        Weather weather = new Weather();
-        try {
-            content = weather.execute("http://api.openweathermap.org/data/2.5/weather?q="+Miasto+"&APPID=af0a2f55ea1c08a014e9ac44776623c1&units=metric&lang=pl").get();
-            // na poczatku sprawdzenie czy otrzymano dane
-            Log.i("content",content);
-
-            JSONObject jsonObject = new JSONObject(content);
-            String weatherData = jsonObject.getString("weather"); //pobieranie z tablicy weather
-            String mainTemperature = jsonObject.getString("main");//pobieranie z tablicy main
-            String windData = jsonObject.getString("wind");
-            Log.i("weatherData",weatherData);
-            // dane pogody "weather"są tablicą a więc trzeba użyć JSONArray
-            JSONArray array = new JSONArray(weatherData);
-
-            String main = "";
-            String description = "";
-            String temperature="";
-            String pressure="";
-            String windspeed ="";
-
-            for(int i=0; i<array.length(); i++) {
-                JSONObject weatherPart = array.getJSONObject(i);
-                main = weatherPart.getString("main");
-                description= weatherPart.getString("description");
-            }
-
-            JSONObject mainPart = new JSONObject(mainTemperature);
-            temperature=mainPart.getString("temp");
-            pressure=mainPart.getString("pressure");
-            Log.i("main",main);
-            Log.i("description",description);
-
-            JSONObject WindPart = new JSONObject(windData);
-            windspeed=WindPart.getString("speed");
-            Log.i("speed",windspeed);
-
-
-            pogoda.setText("Temperatura: "+temperature+"°C\nZachmurzenie: " + description + "\nCisnienie: "+pressure+"hPa"+"\nPredkosc wiatru: "+windspeed+"m/s");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-
 
         procent= (TextView) findViewById(R.id.ProcentTreningu_textView);
         new Thread(new Runnable() {
