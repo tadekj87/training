@@ -3,6 +3,7 @@ package com.example.training;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -65,7 +66,8 @@ public class Teren extends AppCompatActivity {
 
     TextView pogoda;
     String Miasto="Wroclaw";
-
+    private EditText miasto;
+    private Button zatwierdz;
 
     class Weather extends AsyncTask<String,Void,String> {       //pierwszy string ma w sobie URL, trzeba dac void, trzeci string oznacza zwracany typ danych
 
@@ -144,6 +146,8 @@ public class Teren extends AppCompatActivity {
             setTheme(R.style.DarkTheme);
         }
         else setTheme(R.style.AppTheme);
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teren);
 
@@ -159,54 +163,12 @@ public class Teren extends AppCompatActivity {
         Trening1Button = findViewById(R.id.Trening1);
         Trening2Button = findViewById(R.id.Trening2);
 
+        miasto=(EditText)findViewById(R.id.editText);
+        zatwierdz=(Button)findViewById(R.id.button);
         pogoda=findViewById(R.id.Pogoda_textView);
        // pogoda.setText("dzialaj");
-        String content;    //do pogody
-        Weather weather = new Weather();
-        try {
-            content = weather.execute("http://api.openweathermap.org/data/2.5/weather?q="+Miasto+"&APPID=af0a2f55ea1c08a014e9ac44776623c1&units=metric&lang=pl").get();
-            // na poczatku sprawdzenie czy otrzymano dane
-            Log.i("content",content);
 
-            JSONObject jsonObject = new JSONObject(content);
-            String weatherData = jsonObject.getString("weather"); //pobieranie z tablicy weather
-            String mainTemperature = jsonObject.getString("main");//pobieranie z tablicy main
-            String windData = jsonObject.getString("wind");
-            Log.i("weatherData",weatherData);
-            // dane pogody "weather"są tablicą a więc trzeba użyć JSONArray
-            JSONArray array = new JSONArray(weatherData);
-
-            String main = "";
-            String description = "";
-            String temperature="";
-            String pressure="";
-            String windspeed ="";
-
-            for(int i=0; i<array.length(); i++) {
-                JSONObject weatherPart = array.getJSONObject(i);
-                main = weatherPart.getString("main");
-                description= weatherPart.getString("description");
-            }
-
-            JSONObject mainPart = new JSONObject(mainTemperature);
-            temperature=mainPart.getString("temp");
-            pressure=mainPart.getString("pressure");
-            Log.i("main",main);
-            Log.i("description",description);
-
-            JSONObject WindPart = new JSONObject(windData);
-            windspeed=WindPart.getString("speed");
-            Log.i("speed",windspeed);
-
-
-            pogoda.setText("Temperatura: "+temperature+"°C\nZachmurzenie: " + description + "\nCisnienie: "+pressure+"hPa"+"\nPredkosc wiatru: "+windspeed+"m/s");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            Log.i("blad", "BLAD");
-        }
-
-
+        weather("Wrocław");
 
 
         procent= (TextView) findViewById(R.id.ProcentTreningu_textView);
@@ -231,6 +193,8 @@ public class Teren extends AppCompatActivity {
                 }
             }
         }).start();
+
+
 
         Trening1Button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -326,8 +290,65 @@ bckButton=(ImageButton) findViewById(R.id.imageButton);
             startActivity(intent);
         }
     });
+    zatwierdz.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String nowemiasto=miasto.getText().toString();
+          //  Context context = getApplicationContext();
+           // int duration = Toast.LENGTH_SHORT;
+          //  Toast.makeText(context, nowemiasto, duration).show();
+            weather(nowemiasto);
+        }
+    });
 
     }
+    public void weather(String Miasto){
+        String content;    //do pogody
+        Weather weather = new Weather();
+        try {
 
+            content = weather.execute("https://api.openweathermap.org/data/2.5/weather?q="+Miasto+"&APPID=af0a2f55ea1c08a014e9ac44776623c1&units=metric&lang=pl").get();
+            // na poczatku sprawdzenie czy otrzymano dane
+            Log.i("content",content);
+
+            JSONObject jsonObject = new JSONObject(content);
+            String weatherData = jsonObject.getString("weather"); //pobieranie z tablicy weather
+            String mainTemperature = jsonObject.getString("main");//pobieranie z tablicy main
+            String windData = jsonObject.getString("wind");
+            Log.i("weatherData",weatherData);
+            // dane pogody "weather"są tablicą a więc trzeba użyć JSONArray
+            JSONArray array = new JSONArray(weatherData);
+
+            String main = "";
+            String description = "";
+            String temperature="";
+            String pressure="";
+            String windspeed ="";
+
+            for(int i=0; i<array.length(); i++) {
+                JSONObject weatherPart = array.getJSONObject(i);
+                main = weatherPart.getString("main");
+                description= weatherPart.getString("description");
+            }
+
+            JSONObject mainPart = new JSONObject(mainTemperature);
+            temperature=mainPart.getString("temp");
+            pressure=mainPart.getString("pressure");
+            Log.i("main",main);
+            Log.i("description",description);
+
+            JSONObject WindPart = new JSONObject(windData);
+            windspeed=WindPart.getString("speed");
+            Log.i("speed",windspeed);
+
+
+            pogoda.setText("Temperatura: "+temperature+"°C\nZachmurzenie: " + description + "\nCisnienie: "+pressure+"hPa"+"\nPredkosc wiatru: "+windspeed+"m/s");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.i("blad", "BLAD");
+        }
+
+    }
 
 }

@@ -50,6 +50,7 @@
         android:hint="Podaj numer telefonu"
         android:inputType="phone"
         android:textColor="?attr/textcolor"
+        android:textColorHint="?attr/textcolor"
         app:layout_constraintBottom_toTopOf="@+id/Moc_seekBar"
         app:layout_constraintEnd_toStartOf="@+id/WyslijWiadomosc_Button"
         app:layout_constraintHorizontal_bias="0.5"
