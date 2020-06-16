@@ -24,6 +24,7 @@
         android:id="@+id/Kadencja_seekBar"
         android:layout_width="355dp"
         android:layout_height="31dp"
+        android:max="130"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/Moc_seekBar"
         app:layout_constraintTop_toBottomOf="@+id/Moc_seekBar" />
