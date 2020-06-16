@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background1"
+    android:background="?attr/background"
     tools:context=".Dom">
 
 
@@ -15,10 +15,9 @@
         android:background="?android:attr/listDivider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.732" />
+        app:layout_constraintVertical_bias="0.735" />
 
     <ImageButton
         android:id="@+id/imageButton2"
@@ -50,6 +49,8 @@
         android:layout_height="45dp"
         android:hint="Podaj numer telefonu"
         android:inputType="phone"
+        android:textColor="?attr/textcolor"
+        android:textColorHint="?attr/textcolor"
         app:layout_constraintBottom_toTopOf="@+id/Moc_seekBar"
         app:layout_constraintEnd_toStartOf="@+id/WyslijWiadomosc_Button"
         app:layout_constraintHorizontal_bias="0.5"
@@ -83,6 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Zadana moc:"
+        android:textColor="?attr/textcolor"
         app:layout_constraintBottom_toTopOf="@+id/ZadanaKadencja_TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -95,6 +97,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Zadana kadencja:"
+        android:textColor="?attr/textcolor"
         app:layout_constraintBottom_toTopOf="@+id/Wytrzymalosc_Button"
         app:layout_constraintEnd_toEndOf="@+id/ZadanaMoc_TextView"
         app:layout_constraintHorizontal_bias="0.517"
@@ -116,6 +119,7 @@
         android:id="@+id/AktualnaMoc_textView"
         android:layout_width="107dp"
         android:layout_height="24dp"
+        android:textColor="?attr/textcolor"
         app:layout_constraintBottom_toBottomOf="@+id/Moc_textView"
         app:layout_constraintStart_toStartOf="@+id/AktualnaKadencja_textView"
         app:layout_constraintTop_toTopOf="@+id/Moc_textView" />
@@ -124,6 +128,7 @@
         android:id="@+id/AktualnaKadencja_textView"
         android:layout_width="108dp"
         android:layout_height="24dp"
+        android:textColor="?attr/textcolor"
         app:layout_constraintBottom_toBottomOf="@+id/Kadencja_textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -136,6 +141,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="MOC"
+        android:textColor="?attr/textcolor"
         app:layout_constraintBottom_toTopOf="@+id/Kadencja_textView"
         app:layout_constraintStart_toStartOf="@+id/Kadencja_textView"
         app:layout_constraintTop_toBottomOf="@+id/divider5" />
@@ -145,6 +151,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="KADENCJA"
+        android:textColor="?attr/textcolor"
         app:layout_constraintBottom_toTopOf="@+id/divider7"
         app:layout_constraintEnd_toStartOf="@+id/AktualnaKadencja_textView"
         app:layout_constraintHorizontal_bias="0.5"
@@ -158,7 +165,6 @@
         android:background="?android:attr/listDivider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -187,6 +193,7 @@
         android:layout_width="74dp"
         android:layout_height="15dp"
         android:text="AVG MOC"
+        android:textColor="?attr/textcolor"
         app:layout_constraintBottom_toTopOf="@+id/AvgKadencja_textView"
         app:layout_constraintStart_toStartOf="@+id/AvgKadencja_textView"
         app:layout_constraintTop_toBottomOf="@+id/divider7" />
@@ -196,6 +203,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="AVG KADENCJA"
+        android:textColor="?attr/textcolor"
         app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintEnd_toStartOf="@+id/AvgKadencja_ratingBar"
         app:layout_constraintHorizontal_bias="0.5"
@@ -224,6 +232,7 @@
         android:layout_marginRight="20dp"
         android:fontFamily="sans-serif-condensed-light"
         android:text="@string/Dom"
+        android:textColor="?attr/textcolor"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -233,6 +242,7 @@
         android:id="@+id/Kadencja_seekBar"
         android:layout_width="355dp"
         android:layout_height="31dp"
+        android:max="130"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/Moc_seekBar"
         app:layout_constraintHorizontal_bias="0.5"

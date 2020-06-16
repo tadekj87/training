@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background1"
+    android:background="?attr/background"
+    android:id="@+id/cl1"
     tools:context=".MainActivity">
 
 
@@ -26,7 +27,8 @@
         android:layout_marginRight="20dp"
         android:fontFamily="sans-serif-light"
         android:gravity="center"
-        android:text="Menu"
+        android:text="@string/Menu"
+        android:textColor="?attr/textcolor"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -41,11 +43,25 @@
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:text="Jeśli możesz kłaść się spać każdej nocy ze świadomością, że w ciągu dnia dałeś z siebie wszystko, sukces Cię znajdzie – Mason Russell L."
-        android:textColor="#B2000000"
+        android:textColor="?attr/textcolor"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/circle_menu" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:checked="false"
+        android:textColor="?attr/textcolor"
+        android:textOff="jasny"
+        android:textOn="ciemny"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

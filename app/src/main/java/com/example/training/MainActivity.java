@@ -2,14 +2,20 @@ package com.example.training;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.hitomi.cmlibrary.CircleMenu;
 import com.hitomi.cmlibrary.OnMenuSelectedListener;
@@ -31,18 +37,27 @@ public class MainActivity extends AppCompatActivity {
             "Wyjscie"};
     private static int SPLASH_TIME_OUT=4000;
 
-
+    Switch light;
     int OldValue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.DarkTheme);
+        }
+        else setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView Quote=(TextView) findViewById(R.id.textViewQuote);
+
         int random = (int) (Math.random()*arrayQuotes.length);
         if(random==OldValue)
         {random = (int) (Math.random()*arrayQuotes.length);}
         Quote.setText(arrayQuotes[random]);
         OldValue=random;
+        light=(Switch) findViewById(R.id.switch1);
+
+
+
         //new Handler().postDelayed(new Runnable() {
         //     @Override
         //   public void run() {
@@ -51,7 +66,28 @@ public class MainActivity extends AppCompatActivity {
         //       finish();
         //  }
         //  },SPLASH_TIME_OUT);
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            light.setChecked(true);
+        }
+        else light.setChecked(false);
+        light.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
+                    recreate();
+                }
+                else
+                {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    //Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                    //startActivity(i);
+                    //finish();
+                    recreate();
+                }
+            }
+        });
 
         CircleMenu circleMenu=(CircleMenu)findViewById(R.id.circle_menu);
         circleMenu.setMainMenu(Color.parseColor("#CDCDCD"),R.drawable.icon_menu,R.drawable.icon_cancel)
@@ -88,8 +124,9 @@ public class MainActivity extends AppCompatActivity {
 
                             Handler h = new Handler();
                             h.postDelayed(new Runnable() {
+                                              @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                                               public void run() {
-
+                                                  finishAffinity();
                                                   System.exit(0);
                                               }
                                           }

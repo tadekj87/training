@@ -9,38 +9,16 @@
     tools:context=".Teren">
 
 
-    <View
-        android:id="@+id/divider3"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.278" />
-
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.804" />
-
     <SeekBar
         android:id="@+id/Moc_seekBar"
         android:layout_width="355dp"
         android:layout_height="31dp"
         android:max="1000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/divider2"
-        app:layout_constraintStart_toStartOf="@+id/divider2"
-        app:layout_constraintTop_toBottomOf="@+id/divider2"
-        app:layout_constraintVertical_bias="0.22000003" />
+        app:layout_constraintBottom_toTopOf="@+id/Kadencja_seekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AvgKadencja_ratingBar" />
 
     <SeekBar
         android:id="@+id/Kadencja_seekBar"
@@ -72,30 +50,30 @@
         android:layout_height="87dp"
         android:text="Pogoda: Wrocław Temperatura: 20 C"
         android:textColor="?attr/textcolor"
-        app:layout_constraintBottom_toTopOf="@+id/divider3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.181"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Teren" />
+        app:layout_constraintEnd_toStartOf="@+id/editText"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintTop_toTopOf="@+id/editText" />
 
     <Button
         android:id="@+id/Trening1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="49dp"
         android:text="3 Minuty"
-        app:layout_constraintBottom_toTopOf="@+id/divider5"
+        app:layout_constraintBottom_toTopOf="@+id/Trening2"
         app:layout_constraintEnd_toStartOf="@+id/progressBar"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider3" />
+        app:layout_constraintTop_toBottomOf="@+id/Pogoda_textView" />
 
     <Button
         android:id="@+id/Trening2"
         android:layout_width="88dp"
         android:layout_height="49dp"
         android:text="10 Minut"
+        app:layout_constraintBottom_toTopOf="@+id/AvgMoc_ratingBar"
         app:layout_constraintEnd_toEndOf="@+id/Trening1"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/Trening1"
         app:layout_constraintTop_toBottomOf="@+id/Trening1" />
 
@@ -110,6 +88,7 @@
         app:layout_constraintStart_toStartOf="@+id/progressBar"
         app:layout_constraintTop_toTopOf="@+id/progressBar" />
 
+
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
@@ -121,118 +100,94 @@
         android:progressDrawable="@drawable/circular"
         android:secondaryProgress="100"
         app:layout_constraintBottom_toBottomOf="@+id/Trening2"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/Kadencja_textView"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/Trening1"
         app:layout_constraintTop_toTopOf="@+id/Trening1" />
 
-    <View
-        android:id="@+id/divider5"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48" />
-
     <TextView
-        android:id="@+id/AktualnaMoc_textView"
-        android:layout_width="48dp"
-        android:layout_height="21dp"
+        android:id="@+id/Moc_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MOC"
         android:textColor="?attr/textcolor"
-        app:layout_constraintStart_toStartOf="@+id/AktualnaKadencja_textView"
-        app:layout_constraintTop_toTopOf="@+id/Moc_textView" />
-
+        app:layout_constraintBottom_toBottomOf="@+id/ProcentTreningu_textView"
+        app:layout_constraintEnd_toEndOf="@+id/Kadencja_textView"
+        app:layout_constraintTop_toTopOf="@+id/progressBar" />
 
     <TextView
         android:id="@+id/AktualnaKadencja_textView"
         android:layout_width="48dp"
         android:layout_height="17dp"
         android:textColor="?attr/textcolor"
-        app:layout_constraintEnd_toEndOf="@+id/progressBar"
+        app:layout_constraintBottom_toBottomOf="@+id/Kadencja_textView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/Kadencja_textView"
         app:layout_constraintTop_toTopOf="@+id/Kadencja_textView" />
 
     <TextView
-        android:id="@+id/Moc_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="45dp"
-        android:text="MOC"
+        android:id="@+id/AktualnaMoc_textView"
+        android:layout_width="48dp"
+        android:layout_height="21dp"
         android:textColor="?attr/textcolor"
-        app:layout_constraintBottom_toTopOf="@+id/divider7"
-        app:layout_constraintEnd_toEndOf="@+id/Kadencja_textView"
-        app:layout_constraintTop_toBottomOf="@+id/divider5" />
+        app:layout_constraintBottom_toBottomOf="@+id/Moc_textView"
+        app:layout_constraintStart_toStartOf="@+id/AktualnaKadencja_textView"
+        app:layout_constraintTop_toTopOf="@+id/Moc_textView" />
 
     <TextView
         android:id="@+id/Kadencja_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="12dp"
         android:text="KADENCJA"
         android:textColor="?attr/textcolor"
         app:layout_constraintEnd_toStartOf="@+id/AktualnaKadencja_textView"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/Trening2"
+        app:layout_constraintStart_toEndOf="@+id/progressBar"
         app:layout_constraintTop_toBottomOf="@+id/Moc_textView" />
-
-    <View
-        android:id="@+id/divider7"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.593" />
 
     <RatingBar
         android:id="@+id/AvgMoc_ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:stepSize=".1"
-        app:layout_constraintBottom_toBottomOf="@+id/AvgMoc_textView"
+        app:layout_constraintBottom_toTopOf="@+id/AvgKadencja_ratingBar"
         app:layout_constraintStart_toStartOf="@+id/AvgKadencja_ratingBar"
-        app:layout_constraintTop_toTopOf="@+id/AvgMoc_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/Trening2" />
 
     <RatingBar
         android:id="@+id/AvgKadencja_ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:stepSize=".1"
-        app:layout_constraintBottom_toBottomOf="@+id/AvgKadencja_textView"
+        app:layout_constraintBottom_toTopOf="@+id/Moc_seekBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/AvgKadencja_textView"
-        app:layout_constraintTop_toTopOf="@+id/AvgKadencja_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/AvgMoc_ratingBar" />
 
     <TextView
         android:id="@+id/AvgMoc_textView"
         android:layout_width="74dp"
         android:layout_height="15dp"
-        android:layout_marginTop="40dp"
         android:text="AVG MOC"
         android:textColor="?attr/textcolor"
+        app:layout_constraintBottom_toBottomOf="@+id/AvgMoc_ratingBar"
         app:layout_constraintStart_toStartOf="@+id/AvgKadencja_textView"
-        app:layout_constraintTop_toBottomOf="@+id/divider7" />
+        app:layout_constraintTop_toTopOf="@+id/AvgMoc_ratingBar" />
 
     <TextView
         android:id="@+id/AvgKadencja_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:text="AVG KADENCJA"
         android:textColor="?attr/textcolor"
-        app:layout_constraintBottom_toTopOf="@+id/divider2"
+        app:layout_constraintBottom_toBottomOf="@+id/AvgKadencja_ratingBar"
         app:layout_constraintEnd_toStartOf="@+id/AvgKadencja_ratingBar"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AvgMoc_textView"
-        app:layout_constraintVertical_bias="0.16000003" />
+        app:layout_constraintTop_toTopOf="@+id/AvgKadencja_ratingBar" />
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -254,11 +209,10 @@
         android:text="Wrocław"
         android:textColor="?attr/textcolor"
         android:textColorHint="?attr/textcolor"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/Teren"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/Pogoda_textView"
-        app:layout_constraintTop_toTopOf="@+id/Pogoda_textView" />
+        app:layout_constraintTop_toTopOf="@+id/Teren" />
 
     <Button
         android:id="@+id/button"

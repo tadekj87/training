@@ -1,6 +1,7 @@
 package com.example.training;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -71,6 +72,10 @@ public class Dom extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.DarkTheme);
+        }
+        else setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dom);
 
@@ -137,8 +142,8 @@ public class Dom extends AppCompatActivity {
         SilaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MocTreningu = 400;
-                KadencjaTreningu = 30;
+                MocTreningu = 300;
+                KadencjaTreningu = 80;
                 ZadanaMoc.setText("Zadana moc: " + MocTreningu +" W");
                 ZadanaKadencja.setText("Zadana kadencja: " + KadencjaTreningu + " obr/min");
                 SredniaMocfloat = 0;
@@ -150,8 +155,8 @@ public class Dom extends AppCompatActivity {
         WytrzymaloscButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MocTreningu = 300;
-                KadencjaTreningu = 50;
+                MocTreningu = 250;
+                KadencjaTreningu = 100;
                 ZadanaMoc.setText("Zadana moc: " + MocTreningu +" W");
                 ZadanaKadencja.setText("Zadana kadencja: " + KadencjaTreningu + " obr/min");
                 SredniaMocfloat = 0;

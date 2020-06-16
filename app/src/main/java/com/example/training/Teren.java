@@ -1,11 +1,14 @@
 package com.example.training;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -20,6 +23,16 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class Teren extends AppCompatActivity {
 
     private TextView Moc;
@@ -28,7 +41,7 @@ public class Teren extends AppCompatActivity {
     private TextView AktualnaKadencja;
     private SeekBar UstawionaMocBar;
     private SeekBar UstawionaKadencjaBar;
-    private ImageButton bckButton;
+
     private RatingBar SredniaMocRatingBar;
     private RatingBar SredniaKadencjaRatingBar;
     Handler handler = new Handler(); //Do timera
@@ -51,11 +64,56 @@ public class Teren extends AppCompatActivity {
     private Handler progressbarhandler = new Handler();
     TextView procent;
 
+    TextView pogoda;
+    String Miasto="Wroclaw";
+    private EditText miasto;
+    private Button zatwierdz;
+
+    class Weather extends AsyncTask<String,Void,String> {       //pierwszy string ma w sobie URL, trzeba dac void, trzeci string oznacza zwracany typ danych
+
+        public void search(View view){
+
+        }
+
+        @Override
+        protected String doInBackground(String... address){
+
+            //Dzieki String... mozna wpisac wiele adresow, dziala jak tablica
+            try {
+                URL url = new URL(address[0]);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                //ustanow polaczenie z adresem
+                connection.connect();
+
+                //pobierz dane z url
+                InputStream is = connection.getInputStream();
+                InputStreamReader isr = new InputStreamReader(is);
+
+                //pobierz dane i zwroc jako string
+                int data = isr.read();
+                String content = "";
+                char ch;
+                while (data !=-1) {
+                    ch =(char) data;
+                    content = content + ch;
+                    data = isr.read();
+                }
+                return content;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+    }
+
+
+
     @Override
     protected void onResume() {
-
-
-
         SredniaMocRatingBar = findViewById(R.id.AvgMoc_ratingBar);
         SredniaKadencjaRatingBar = findViewById(R.id.AvgKadencja_ratingBar);
         AktualnaMoc = findViewById(R.id.AktualnaMoc_textView);
@@ -81,12 +139,18 @@ public class Teren extends AppCompatActivity {
         handler.removeCallbacks(runnable); //zatrzymaj gdy aplikacja niewidoczna
         super.onPause();
     }
-
+    ImageButton bckButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.DarkTheme);
+        }
+        else setTheme(R.style.AppTheme);
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teren);
-        bckButton = (ImageButton) findViewById(R.id.imageButton);
+
         Resources res = getResources(); //do progressbar
         Drawable drawable = res.getDrawable(R.drawable.circular);
         final ProgressBar mProgress = (ProgressBar) findViewById(R.id.progressBar);
@@ -98,6 +162,14 @@ public class Teren extends AppCompatActivity {
         // CzasTreninguBar.setProgress(35);
         Trening1Button = findViewById(R.id.Trening1);
         Trening2Button = findViewById(R.id.Trening2);
+
+        miasto=(EditText)findViewById(R.id.editText);
+        zatwierdz=(Button)findViewById(R.id.button);
+        pogoda=findViewById(R.id.Pogoda_textView);
+       // pogoda.setText("dzialaj");
+
+        weather("Wrocław");
+
 
         procent= (TextView) findViewById(R.id.ProcentTreningu_textView);
         new Thread(new Runnable() {
@@ -121,6 +193,8 @@ public class Teren extends AppCompatActivity {
                 }
             }
         }).start();
+
+
 
         Trening1Button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -208,7 +282,7 @@ public class Teren extends AppCompatActivity {
             }
         };
         mCountDownTimer.start();*/
-
+bckButton=(ImageButton) findViewById(R.id.imageButton);
     bckButton.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -216,8 +290,65 @@ public class Teren extends AppCompatActivity {
             startActivity(intent);
         }
     });
+    zatwierdz.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String nowemiasto=miasto.getText().toString();
+          //  Context context = getApplicationContext();
+           // int duration = Toast.LENGTH_SHORT;
+          //  Toast.makeText(context, nowemiasto, duration).show();
+            weather(nowemiasto);
+        }
+    });
 
     }
+    public void weather(String Miasto){
+        String content;    //do pogody
+        Weather weather = new Weather();
+        try {
 
+            content = weather.execute("https://api.openweathermap.org/data/2.5/weather?q="+Miasto+"&APPID=af0a2f55ea1c08a014e9ac44776623c1&units=metric&lang=pl").get();
+            // na poczatku sprawdzenie czy otrzymano dane
+            Log.i("content",content);
+
+            JSONObject jsonObject = new JSONObject(content);
+            String weatherData = jsonObject.getString("weather"); //pobieranie z tablicy weather
+            String mainTemperature = jsonObject.getString("main");//pobieranie z tablicy main
+            String windData = jsonObject.getString("wind");
+            Log.i("weatherData",weatherData);
+            // dane pogody "weather"są tablicą a więc trzeba użyć JSONArray
+            JSONArray array = new JSONArray(weatherData);
+
+            String main = "";
+            String description = "";
+            String temperature="";
+            String pressure="";
+            String windspeed ="";
+
+            for(int i=0; i<array.length(); i++) {
+                JSONObject weatherPart = array.getJSONObject(i);
+                main = weatherPart.getString("main");
+                description= weatherPart.getString("description");
+            }
+
+            JSONObject mainPart = new JSONObject(mainTemperature);
+            temperature=mainPart.getString("temp");
+            pressure=mainPart.getString("pressure");
+            Log.i("main",main);
+            Log.i("description",description);
+
+            JSONObject WindPart = new JSONObject(windData);
+            windspeed=WindPart.getString("speed");
+            Log.i("speed",windspeed);
+
+
+            pogoda.setText("Temperatura: "+temperature+"°C\nZachmurzenie: " + description + "\nCisnienie: "+pressure+"hPa"+"\nPredkosc wiatru: "+windspeed+"m/s");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.i("blad", "BLAD");
+        }
+
+    }
 
 }

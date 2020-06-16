@@ -6,7 +6,24 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
+        <item name="textcolor">@color/textcolor</item>
+        <item name="buttoncolor">@color/buttoncolor</item>
+        <item name="background">@drawable/background1</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
     </style>
 
+    <style name="DarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#75000000</item>
+        <item name="colorPrimaryDark">#D8000000</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="textcolor">#FFFFFF</item>
+        <item name="buttoncolor">#36000000</item>
+        <item name="background">@drawable/myimage</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+    </style>
+<style name="WindowAnimationTransition">
+    <item name="android:windowEnterAnimation">@android:anim/fade_in </item>
+    <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+</style>
 </resources>
